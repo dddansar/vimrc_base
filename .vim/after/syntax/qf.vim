@@ -54,17 +54,15 @@ endif
 if exists("b:current_syntax") && b:current_syntax == "qf"
    source $vim_folder_path/lib/more_colors.vim
    source $vim_folder_path/lib/syntax_library.vim
-   source $vim_folder_path/lib/unicode.vim
    " echom "qf.vim source files loaded"
 
    call AllCaps()
    call AllHLWords()
    call AllNumbers()
    call AllNumbersHex()
-   call AllNumbersUnicode(0)
 
    syn clear qfText
-   syn match qfText ".*" contained contains=AllCaps,AllCaps1,AllNumbersSci,AllNumbersUnd,AllNumbersHex1,AllNumbersHex2,AllNumbersTick,AllNumbersUnicode,@ClusterUnicode
+   syn match qfText ".*" contained contains=AllCaps,AllCaps1,AllNumbersSci,AllNumbersUnd,AllNumbersHex1,AllNumbersHex2,AllNumbersTick
 
 endif
 

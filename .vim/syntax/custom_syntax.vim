@@ -34,8 +34,7 @@
 "------------------------------------------------------------------------------
 " Setting b:comment_leader based on Filetype. This can then be used to
 " syntax match comments or to create comments with remappings.
-" b:comment_leader is used to determine the comments when
-" g:select_custom_syntax >= 2.
+" b:comment_leader is used to determine the comments
 "------------------------------------------------------------------------------
 augroup SetFiletypeComment
 
@@ -56,7 +55,6 @@ augroup SetFiletypeComment
    autocmd BufNewFile,BufRead *.uni                     set filetype=uni
    autocmd BufNewFile,BufRead *.vh                      set filetype=verilog
    autocmd BufNewFile,BufRead *.i                       set filetype=c
-   autocmd BufNewFile,BufRead *.rcf                     set filetype=rcf
    autocmd BufNewFile,BufRead *.objdump                 set filetype=asm
 
    " NOTE: You can get the current file filetype with :set filetype?

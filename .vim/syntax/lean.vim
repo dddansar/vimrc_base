@@ -61,20 +61,12 @@ if exists("b:current_syntax") && b:current_syntax == "lean"
    source $vim_folder_path/lib/regex.vim
    source $vim_folder_path/lib/abbrev.vim
 
-   source $vim_folder_path/lib/math_mappings.vim
-   source $vim_folder_path/lib/unicode.vim
-
    hi  link    LeanSlash    Operator
    syn match   LeanSlash    "\/"
 
    call AllCommentAnywhere()
    call AllMultiLineCommentAnywhere()
    call AllFilesDefaultSyntax()
-endif
-
-
-if exists("b:spell_loaded") && filereadable(expand($vim_spell_path . "/lean.utf-8.spl"))
-   setlocal spelllang+=lean
 endif
 
 

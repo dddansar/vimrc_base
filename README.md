@@ -1,6 +1,12 @@
-# vimrc
+# vimrc_simple
 
-Contains all my vimrc settings.
+This is a simplified version of my vimrc_full repo without all the extra clutter that don't apply for most users.
+
+- Removed spell checking/autocorrect related files and syntax groups
+- Removed Unicode and math Vim files
+- Removed plugins such as claude.vim, vim-characterize, vim-autocorrect, vim-you-autocorrect
+- Removed niche files and settings
+
 
 ## Features
 
@@ -15,40 +21,24 @@ Contains all my vimrc settings.
 - Adds font styles such as bold, underline, italic, colors, strikethrough and other combinations
 - Displays the name of the syntax group being applied under the cursor
 - Includes performance optimization features and multiple performance modes
-- Includes AI Integration with Pasky's plugin for using Anthropic's Claude AI via an API (Now also supports OpenAI/ChatGPT, Gemini and Qwen/Ollama!!!)
 - Includes custom mappings and abbreviations
-- Adds improved Unicode support with tpope/vim-characterize plugin, and added a function to search in Unicode names
 - Improved search and replace functionality with mappings
-- Contains autocorrect and spell checking support
-- Can emulate clipboard utility selections and copying if not supported or properly working such as in NeoVim or Windows
 
-## .vim/ Folder Contents
+## Vim Files and Folder Contents
 ```
+.vimrc                          # Main vimrc settings and mappings
 .vim/
 ├── colors/                     # Contains custom colorschemes
 ├── lib/                        # Contains generic functions, abbreviations, mappings, highlights, syntax and include files
 │   ├── abbrev.vim              # Common abbreviations and shortcuts
-│   ├── all_colors.vim          # Contains and highlights all the colored names available in Vim.
-│   ├── linux.vim               # Linux commands custom syntax highlighting
-│   ├── math_mappings.vim       # Math/Unicode mappings from VSCode/Lean
-│   ├── math.vim                # Math custom syntax highlighting and abbreviations
 │   ├── more_colors.vim         # Adds additional highlighting groups and colors
 │   ├── regex.vim               # Regular expression custom syntax highlighting
-│   ├── spell.vim               # Spell checking configurations
-│   ├── syntax_library.vim      # Library of syntax highlighting functions for use in all filetypes
-│   └── unicode.vim             # Unicode support and abbreviations
+│   └── syntax_library.vim      # Library of syntax highlighting functions for use in all filetypes
 ├── pack/
-│   ├── colorschemes/start/ddd_colorschemes/    # Contains my ddd_colorschemes
-│   ├── pasky/start/claude.vim/                 # Pasky's plugin for using Anthropic's Claude AI via an API
-│   ├── plugins/start/vim-characterize/         # Pressing ga now gives additional Unicode information
-│   ├── plugins/start/vim-autocorrect/          # Contains a list of autocorrections abbreviations
-│   └── plugins/start/vim-you-autocorrect/      # Detects spell errors and corrects them automatically based on Vim's most likely correction.
-├── plugin/
-│   └── matchparen.vim          # Matching parenthesis highlighting overrides
+│   └── colorschemes/start/ddd_colorschemes/    # Contains my ddd_colorschemes
 ├── syntax/
 │   ├── custom_syntax.vim       # Loads the custom syntax highlighting groups based on file extension
 │   ├── lean.vim                # Lean math prover custom syntax highlighting
-│   ├── rcf.vim                 # RCF custom syntax highlighting
 │   └── text.vim                # Plain text custom syntax highlighting
 ├── thesaurus/
 │   └── abbrevlist.txt          # Abbreviations list from all files for thesaurus lookup
@@ -95,12 +85,15 @@ NeoVim uses different configuration directories than Vim. You can get all the vi
 Option 2) Linking NeoVim to Vim, can depend on the specific locations that NeoVim uses in your OS. Below is what works for me in Ubuntu/Mint Linux.
 
 Link Vim's .vimrc and .vim/ subfolders in NeoVim.
-```bash
-ln -s ~/.vim/colors      ~/.config/nvim/colors
-ln -s ~/.vim/spell       ~/.config/nvim/spell
-ln -s ~/.vim/pack        ~/.config/nvim/pack
-ln -s ~/.vim/after       ~/.config/nvim/after
-ln -s ~/.vim/syntax      ~/.config/nvim/syntax
+```bash.
+ln -s ~/.vim/after      ~/.config/nvim/after
+ln -s ~/.vim/colors     ~/.config/nvim/colors
+ln -s ~/.vim/lib        ~/.config/nvim/lib
+ln -s ~/.vim/pack       ~/.config/nvim/pack
+ln -s ~/.vim/plugin     ~/.config/nvim/plugin
+ln -s ~/.vim/spell      ~/.config/nvim/spell
+ln -s ~/.vim/syntax     ~/.config/nvim/syntax
+ln -s ~/.vim/thesaurus  ~/.config/nvim/thesaurus
 ```
 
 And add to ~/.config/nvim/init.lua
@@ -111,36 +104,6 @@ vim.cmd('source ~/.vimrc')
 
 Now when I open a file with NeoVim, it gets the same settings as when I load the file with GVim.
 
-
-## Pasky's Plugin for using Anthropic's Claude AI
-
-I was able to get Pasky's Claude AI API working in GVim, Vim and NeoVim on my Ubuntu/Mint Linux OS and I also got it working on my Windows OS using GVim (I have not tried NeoVim on Windows). The plugin works with the latest versions of Claude Sonnet and Opus (Once a new version comes out simply update the "g:claude_model" variable).
-
-To get the Claude API to work, follow these steps:
-1) Download the Pasky Plugin and place in you .vim folder
-
-    A) I made modifications to Pasky's Claude API plugin that you can find in:
-    https://github.com/dddansar/claude.vim
-    and add it to your .vim/pack/pasky/start/claude.vim/
-
-    OR
-
-    B) You can download Pasky's Original Claude API plugin from:
-    https://github.com/pasky/claude.vim
-    and add it to your .vim/pack/pasky/start/claude.vim/
-2) To confirm the plugin works for you, open a new vim window (ideally with an empty or a small file just to test it out), press <leader>cc to open a Claude prompt, type your question or command in the prompt, press ctrl-] to send you question or command, and Claude should start replying in the prompt window.
-If you don't have an API key yet, you should get an error stating: "message":"x-api-key header is required"
-3) Get an API key from https://platform.claude.com
-4) Add the API key in g:claude_api_key in your .vimrc file:
-```vim
-let g:claude_api_key='add_api_key_here'
-```
-5) Try step 2 again and hopefully it works for you now.
-
-NOTE: I made some modifications to Pasky's plugins (the May 2025 version) to address some issues I was having, to add new features and capabilities, to add my own improvements to the plugin, to make the chat experience better suit my personal preferences, to not use the claude\_\*\_prompt.md files (I prefer default prompts)...
-
-Visit the following link for details:
-https://github.com/dddansar/claude.vim
 
 ## Custom Colorscheme
 
@@ -167,9 +130,6 @@ Make sure you don't have any other colorschemes enabled overriding the custom co
 ### Comparison with/without my custom syntax matching.
 
 Both images below use my ddd_black.vim file. The image on the left shows the default syntax matching and the image on the right adds my custom syntax matching on top.
-
-Left  image: With g:select_custom_syntax = 1
-Right image: With g:select_custom_syntax = 2
 
 For vim files:
 

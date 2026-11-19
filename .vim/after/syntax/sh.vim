@@ -56,9 +56,7 @@ if exists("b:current_syntax") && (b:current_syntax == "sh" || b:current_syntax =
    source $vim_folder_path/lib/syntax_library.vim
    source $vim_folder_path/lib/regex.vim
    source $vim_folder_path/lib/abbrev.vim
-   source $vim_folder_path/lib/linux.vim
 
-   call LinuxCommandsMatch(0)
    call AllFilesDefaultSyntax()
    call AllPathsSingleSlashStart(1)
    call RegexMatches(1)
@@ -88,10 +86,4 @@ syn match   ShOptions   "\s-[a-zA-Z]\+\s" contained containedin=shDoubleQuote,sh
 
 hi  link    ShOperators   Operator
 syn match   ShOperators   "[=]" contained containedin=shDoubleQuote,shSingleQuote
-
-hi  link    LinuxCommands2 Identifier
-syn keyword LinuxCommands2 vsp split wincmd contained containedin=shSingleQuote
-
-" invisible/transparent group...
-syn keyword LinuxCommands tmux containedin=shIf
 

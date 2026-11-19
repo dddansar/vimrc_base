@@ -1,15 +1,3 @@
-[submodule ".vim/pack/pasky/start/claude.vim"]
-	path = .vim/pack/pasky/start/claude.vim
-	url = https://github.com/dddansar/claude.vim
-[submodule ".vim/pack/plugins/start/vim-characterize"]
-	path = .vim/pack/plugins/start/vim-characterize
-	url = https://github.com/tpope/vim-characterize.git
 [submodule ".vim/pack/colorschemes/start/ddd_colorschemes/colors"]
 	path = .vim/pack/colorschemes/start/ddd_colorschemes/colors
 	url = https://github.com/dddansar/colorschemes
-[submodule ".vim/pack/plugins/start/vim-autocorrect"]
-	path = .vim/pack/plugins/start/vim-autocorrect
-	url = https://github.com/panozzaj/vim-autocorrect.git
-[submodule ".vim/pack/plugins/start/vim-you-autocorrect"]
-	path = .vim/pack/plugins/start/vim-you-autocorrect
-	url = https://github.com/dddansar/vim-you-autocorrect

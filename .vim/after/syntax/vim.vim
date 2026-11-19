@@ -58,18 +58,6 @@ if exists("b:current_syntax") && b:current_syntax == "vim"
    source $vim_folder_path/lib/regex.vim
    source $vim_folder_path/lib/abbrev.vim
 
-   " NOTE: Moving these here to re-source on file/syntax reload.
-   if expand('%:t') =~# '^math_mappings\.vim$'
-      source $vim_folder_path/lib/math_mappings.vim
-   endif
-   if expand('%:t') =~# '\(math_mappings\|math\|unicode\)\.vim$'
-      source $vim_folder_path/lib/unicode.vim
-   endif
-   if expand('%:t') =~# '^all_colors\.vim$'
-      source $vim_folder_path/lib/all_colors.vim
-      finish
-   endif
-
    " I use my own TODO/NOTE matching
    if hlexists('vimTodo')
       syn clear vimTodo
@@ -81,7 +69,6 @@ if exists("b:current_syntax") && b:current_syntax == "vim"
 
 
    call AllFilesDefaultSyntax()
-   call AllNumbersUnicode(1)
 
    call AllDefineAt()
    call RegexMatches(1)
@@ -130,9 +117,6 @@ syn match   VimFunctions   "\<[a-zA-Z]\+\>\%((\)\@=" contained containedin=vimMa
 hi  link    VimVisualSel  SpecialKey
 syn match   VimVisualSel  "'<,'>" contained containedin=vimMapRhs
 
-
-hi  link    VimEatChar  Type
-syn match   VimEatChar  "\<Eatchar\>" contained containedin=vimMapRhs
 
 hi  link    VimContainedInExe  Special
 syn match   VimContainedInExe  "\<contain\%(s\|ed\|edin\)\>" contained containedin=vimString,vimContinueString
