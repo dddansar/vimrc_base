@@ -1,11 +1,11 @@
-# vimrc_simple
+# vimrc_base
 
-This is a simplified version of my vimrc_full repo without all the extra clutter that don't apply for most users.
+This is a simplified version of my vimrc repo without all the extra clutter that don't apply for most users.
 
 - Removed spell checking/autocorrect related files and syntax groups
 - Removed Unicode and math Vim files
 - Removed plugins such as claude.vim, vim-characterize, vim-autocorrect, vim-you-autocorrect
-- Removed niche files and settings
+- Removed mappings, files, syntax, functions... that are rarely used
 
 
 ## Features
