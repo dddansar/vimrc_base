@@ -1,8 +1,7 @@
 "==============================================================================
-" File: custom_syntax.vim
+" File: filetype_settings.vim
 "------------------------------------------------------------------------------
-" Description: Loads the custom syntax highlighting groups based on the file
-"              extension.
+" Description: Loads additional settings based on the file extension/filetype.
 "------------------------------------------------------------------------------
 " Authors: Danny Sarraf
 "------------------------------------------------------------------------------
@@ -55,6 +54,7 @@ augroup SetFiletypeComment
    autocmd BufNewFile,BufRead *.uni                     set filetype=uni
    autocmd BufNewFile,BufRead *.vh                      set filetype=verilog
    autocmd BufNewFile,BufRead *.i                       set filetype=c
+   autocmd BufNewFile,BufRead *.rcf                     set filetype=rcf
    autocmd BufNewFile,BufRead *.objdump                 set filetype=asm
 
    " NOTE: You can get the current file filetype with :set filetype?
@@ -108,6 +108,5 @@ augroup SetFiletypeComment
 
 augroup END
 
-
-let b:custom_syntax_loaded = 1
+let b:filetype_settings_loaded = 1
 

@@ -92,7 +92,7 @@ endif
 " NOTE: Link NeoVim to Vim's .vimrc and .vim/ in linux!
 " Link the .vimrc file in NeoVim.
 " ln -s ~/.vimrc ~/.config/nvim/init.vim
-" Link various .vim/ subfolders in NeoVim..
+" Link various .vim/ subfolders in NeoVim.
 " ln -s ~/.vim/after ~/.config/nvim/after
 " ln -s ~/.vim/colors ~/.config/nvim/colors
 " ln -s ~/.vim/lib ~/.config/nvim/lib
@@ -548,8 +548,8 @@ function! DefaultSettings()
    " NOTE: This file is responsible for /d loading additional options r/ based on
    " the file extension/filetype
    "---------------------------------------------------------------------------
-   if !exists("b:custom_syntax_loaded")
-      source $vim_folder_path/syntax/custom_syntax.vim
+   if !exists("b:filetype_settings_loaded")
+      source $vim_folder_path/lib/filetype_settings.vim
    end
 
 
