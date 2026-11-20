@@ -31,13 +31,13 @@ This is a simplified version of my vimrc repo without all the extra clutter that
 ├── colors/                     # Contains custom colorschemes
 ├── lib/                        # Contains generic functions, abbreviations, mappings, highlights, syntax and include files
 │   ├── abbrev.vim              # Common abbreviations and shortcuts
+│   ├── filetype_settings.vim   # Loads additional settings based on the file extension or filetype
 │   ├── more_colors.vim         # Adds additional highlighting groups and colors
 │   ├── regex.vim               # Regular expression custom syntax highlighting
 │   └── syntax_library.vim      # Library of syntax highlighting functions for use in all filetypes
 ├── pack/
 │   └── colorschemes/start/ddd_colorschemes/    # Contains my ddd_colorschemes
 ├── syntax/
-│   ├── custom_syntax.vim       # Loads the custom syntax highlighting groups based on file extension
 │   ├── lean.vim                # Lean math prover custom syntax highlighting
 │   └── text.vim                # Plain text custom syntax highlighting
 ├── thesaurus/
@@ -85,7 +85,7 @@ NeoVim uses different configuration directories than Vim. You can get all the vi
 Option 2) Linking NeoVim to Vim, can depend on the specific locations that NeoVim uses in your OS. Below is what works for me in Ubuntu/Mint Linux.
 
 Link Vim's .vimrc and .vim/ subfolders in NeoVim.
-```bash.
+```bash
 ln -s ~/.vim/after      ~/.config/nvim/after
 ln -s ~/.vim/colors     ~/.config/nvim/colors
 ln -s ~/.vim/lib        ~/.config/nvim/lib
