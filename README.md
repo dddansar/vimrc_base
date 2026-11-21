@@ -39,6 +39,7 @@ This is a simplified version of my vimrc repo without all the extra clutter that
 │   └── colorschemes/start/ddd_colorschemes/    # Contains my ddd_colorschemes
 ├── syntax/
 │   ├── lean.vim                # Lean math prover custom syntax highlighting
+│   ├── nofiletype.vim          # Custom syntax highlighting for files with no filetype
 │   └── text.vim                # Plain text custom syntax highlighting
 ├── thesaurus/
 │   └── abbrevlist.txt          # Abbreviations list from all files for thesaurus lookup
