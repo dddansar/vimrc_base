@@ -115,6 +115,10 @@ endif
 function! CommonSettings()
    let g:EnteredCommonSetting = 1
 
+   if exists("g:debug_syntax")
+      echom "Entered CommonSettings()"
+   endif
+
    "---------------------------------------------------------------------------
    " Enable syntax highlighting
    "---------------------------------------------------------------------------
@@ -173,6 +177,9 @@ endfunction
 " Description: Loads the selected colorscheme.
 "------------------------------------------------------------------------------
 function! LoadColorscheme()
+   if exists("g:debug_syntax")
+      echom "Entered LoadColorscheme()"
+   endif
    colorscheme ddd_black
    " Use one of the default colorschemes
    " colorscheme pablo
@@ -184,6 +191,9 @@ endfunction
 " Description: Loads the default settings, mappings and syntax files
 "------------------------------------------------------------------------------
 function! DefaultSettings()
+   if exists("g:debug_syntax")
+      echom "Entered DefaultSettings()"
+   endif
    let g:EnteredDefaultSetting = 1
 
    "---------------------------------------------------------------------------
@@ -716,6 +726,7 @@ function! LoadMappings()
    " Inserts spaces/tabs on empty lines
    " NOTE: shiftround only rounds indentation in "v" mode not "V" mode...
    " > and < lose the visual selection once applied, reapply with gv.
+
    " Make tabs and spaces shift all lines equally in visual mode.
    vnoremap <expr> <tab> getpos('v')[2] > 1 && getpos('.')[2] > 1
          \ ? (mode() =~# '[vV]' ? "<c-v><s-i><tab>" : "<s-i><tab>")
@@ -857,11 +868,6 @@ function! LoadMappings()
    nnoremap <silent> <c-l> :exe "normal! \<lt>c-w>\<lt>c-w>\<lt>c-w>\<lt>bar>\<lt>c-w>_zz"<cr>
    nnoremap <silent> <c-h> :exe "normal! \<lt>c-w>\<lt>s-w>\<lt>c-w>\<lt>bar>\<lt>c-w>_zz"<cr>
 
-   " Same "move btw split screens" as above but using the arrow keys.
-   nnoremap <c-down> $<c-w>j<c-w><bar><c-w>_0zz
-   nnoremap <c-up>   $<c-w>k<c-w><bar><c-w>_0zz
-   nnoremap <silent> <c-right> :exe "normal! \<lt>c-w>\<lt>c-w>\<lt>c-w>\<lt>bar>\<lt>c-w>_zz"<cr>
-   nnoremap <silent> <c-left>  :exe "normal! \<lt>c-w>\<lt>s-w>\<lt>c-w>\<lt>bar>\<lt>c-w>_zz"<cr>
 
    " Terminal mode: Exit terminal mode first, then move between splits
    tnoremap <c-j>    <c-\><c-n>$<c-w>j<c-w><bar><c-w>_
@@ -869,6 +875,11 @@ function! LoadMappings()
    tnoremap <silent> <c-l> <c-\><c-n>:exe "normal! \<lt>c-w>\<lt>c-w>\<lt>c-w>\<lt>bar>\<lt>c-w>_"<cr>
    tnoremap <silent> <c-h> <c-\><c-n>:exe "normal! \<lt>c-w>\<lt>s-w>\<lt>c-w>\<lt>bar>\<lt>c-w>_"<cr>
 
+   " Same "move btw split screens" as above but using the arrow keys.
+   nnoremap <c-down> $<c-w>j<c-w><bar><c-w>_0zz
+   nnoremap <c-up>   $<c-w>k<c-w><bar><c-w>_0zz
+   nnoremap <silent> <c-right> :exe "normal! \<lt>c-w>\<lt>c-w>\<lt>c-w>\<lt>bar>\<lt>c-w>_zz"<cr>
+   nnoremap <silent> <c-left>  :exe "normal! \<lt>c-w>\<lt>s-w>\<lt>c-w>\<lt>bar>\<lt>c-w>_zz"<cr>
 
    " In multi-split windows, will full-size current file.
    nnoremap <c-space> <c-w><bar><c-w>_zz
@@ -1152,6 +1163,15 @@ augroup MainFunction
    " This gets called if the file is empty and loads DefaultSettings()
    autocmd VimEnter * if !exists("g:EnteredDefaultSetting") && !exists("g:EnteredLargeFile") |
       \ call DefaultSettings() | endif
+augroup END
+
+" Set custom syntax for empty files or files with no filetype
+augroup SetNoFiletype
+   autocmd!
+   " NOTE: Was not setting nofiletype when inside filetype_settings.vim with:
+   "       grep filetype .vim/ -r | gvim - (but was getting set when opening a
+   "       pre-existing file with no filetype). Now works for both cases.
+   autocmd BufWinEnter * if &filetype ==# '' | set filetype=nofiletype | endif
 augroup END
 
 
