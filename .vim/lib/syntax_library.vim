@@ -274,16 +274,16 @@ endfunction
 function! AllSlashes()
    " messes with perl /
    if (!exists("b:comment_leader") || b:comment_leader[0] != '/') && (!exists("b:multi_line_comment_start") || b:multi_line_comment_start[0] != '/')
-      hi  link    AllSpChars1    Operator
-      syn match   AllSpChars1    "\%#=1\/"
+      hi  link    AllSlashes1    Operator
+      syn match   AllSlashes1    "\%#=1\/"
    endif
 
    if (!exists("b:comment_leader") || b:comment_leader[0] != '\\') && (!exists("b:multi_line_comment_start") || b:multi_line_comment_start[0] != '\\')
-      hi  link    AllSpChars2    Exception
-      syn match   AllSpChars2    "\%#=1\\"
+      hi  link    AllSlashes2    Exception
+      syn match   AllSlashes2    "\%#=1\\"
 
-      hi  link    AllSpChars3  SpecialChar
-      syn match   AllSpChars3  "\%#=1\\n"
+      hi  link    AllSlashes3  SpecialChar
+      syn match   AllSlashes3  "\%#=1\\n"
    endif
 endfunction
 
@@ -537,7 +537,7 @@ function! AllPathsWin(contained_en)
    if g:performance_mode <= 0
       hi  link     AllPathsWin Directory
       hi  link     AllPathsWin Directory
-      execute 'syn match AllPathsWin "\%#=1\%(\<\%(file:///\)\?[C-H]:\|\.\.\)\%([\\/][a-zA-Z0-9_.-]\+\)\+\%([\\/]\?\|\>\)" contains=@NoSpell' . (a:contained_en ? ' contained' : '') . ' containedin=@ClusterAllPathsCI keepend'
+      execute 'syn match AllPathsWin "\%#=1\%(\<\%(file:///\)\?[A-Z]:\|\.\.\)\%([\\/][a-zA-Z0-9_.-]\+\)\+\%([\\/]\?\|\>\)" contains=@NoSpell' . (a:contained_en ? ' contained' : '') . ' containedin=@ClusterAllPathsCI keepend'
    endif
 endfunction
 

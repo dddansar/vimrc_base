@@ -49,6 +49,7 @@ This is a simplified version of my vimrc repo without all the extra clutter that
     └── syntax/
         ├── asm.vim             # Assembly custom syntax highlighting
         ├── c.vim               # C/C++ custom syntax highlighting
+        ├── conf.vim            # Configuration custom syntax highlighting
         ├── csh.vim             # C shell custom syntax highlighting
         ├── java.vim            # Java custom syntax highlighting
         ├── javascript.vim      # JavaScript custom syntax highlighting
