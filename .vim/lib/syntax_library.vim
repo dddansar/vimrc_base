@@ -31,10 +31,7 @@
 "==============================================================================
 
 if !exists("g:syntax_on")
-  finish
-endif
-if exists("g:debug_syntax")
-   echom "syntax_library.vim file loaded"
+   finish
 endif
 
 " NOTE: Moved to the top. The guard was preventing the hi link from re-setting.
