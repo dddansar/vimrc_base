@@ -60,10 +60,6 @@ if exists("b:current_syntax") && b:current_syntax == "nofiletype"
    source $vim_folder_path/lib/regex.vim
    source $vim_folder_path/lib/abbrev.vim
 
-   source $vim_folder_path/lib/linux.vim
-   call LinuxCommandsMatch(0)
-   call LinuxCommandsMatch(1)
-
    call AllTabsAndSpaces()
    call AllCaps()
    call AllPaths1(0)
@@ -80,7 +76,6 @@ if exists("b:current_syntax") && b:current_syntax == "nofiletype"
    call AllSeparators2() " needs to be before AllNumbers()
    call AllNumbers()
    call AllNumbersHex()
-   call AllNumbersUnicode(0)
    call AllSlashes()
    " call AllCommentAnywhere()
    " call AllMultiLineCommentAnywhere()
