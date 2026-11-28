@@ -254,7 +254,7 @@ endfunction
 " Separators like : ; . ,
 function! AllSeparators()
    hi  link    AllSeparators   Delimiter
-   syn match   AllSeparators   "\%#=1[:;,.]\%($\)\@!"
+   syn match   AllSeparators   "\%#=1[:;,.]\%(\n\)\@!"
 endfunction
 function! AllSeparators2()
    hi  link    AllSeparators2  Delimiter

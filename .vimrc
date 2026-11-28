@@ -680,8 +680,6 @@ function! LoadMappings()
       vnoremap <s-p> p
    endif
 
-   " diff obtain entire file
-   nnoremap dO :%diffget<cr>
 
    " Paste last selected without using mouse.
    " cnoremap <a-p>   <middlemouse>
@@ -775,6 +773,25 @@ function! LoadMappings()
    noremap zh ]sEa<c-x>s
    " Autocorrect word to first match.
    nnoremap gz z=1<cr><cr>
+
+
+   " Diff related mappings
+   function! s:DiffMappings() abort
+      if &diff
+         " diff obtain entire file
+         nnoremap dO :%diffget<cr>
+         " Go to next/previous diff change and obtain/put diff change
+         nnoremap dn ]cdo
+         nnoremap dN [cdo
+         nnoremap dm ]cdp
+         nnoremap dM [cdp
+      endif
+   endfunction
+   augroup DiffMappings
+      autocmd!
+      autocmd VimEnter,BufWinEnter * call s:DiffMappings()
+      autocmd OptionSet diff call s:DiffMappings()
+   augroup END
 
 
    "---------------------------------------------------------------------------

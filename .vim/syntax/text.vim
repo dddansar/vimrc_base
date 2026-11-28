@@ -123,5 +123,6 @@ syn match   TextLetterParen    "\%#=1^\s*-\?\s*(\?[A-Z])" contains=@NoSpell cont
 syn match   TextNumberParen    "\%#=1\s\+([0-9]\+)" contains=@NoSpell containedin=AllLabel3
 syn match   TextLetterParen    "\%#=1\s\+([A-Z])" contains=@NoSpell containedin=AllLabel3
 
+
 call AllMultiWordLabel(0)
 
