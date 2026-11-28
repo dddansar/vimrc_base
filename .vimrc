@@ -391,9 +391,9 @@ function! DefaultSettings()
    " In GVim, 'guioptions' controls whether various GUI widgets are shown.
    " Below means left/bottom scroll bar disabled, right scroll bar enabled.
    " Default: aegimrLtT
-   if !has('nvim')
-      set guioptions=aegimrt
-   endif
+   " if !has('nvim')
+   "    set guioptions=aegimrt
+   " endif
    " Remove the toolbar menu (icon bar) in GVim.
    " set guioptions-=T
 
@@ -731,9 +731,9 @@ function! LoadMappings()
    " > and < lose the visual selection once applied, reapply with gv.
 
    " Make tabs and spaces shift all lines equally in visual mode.
-   vnoremap <expr> <tab> getpos('v')[2] > 1 && getpos('.')[2] > 1
-         \ ? (mode() =~# '[vV]' ? "<c-v><s-i><tab>" : "<s-i><tab>")
-         \ : (mode() =~# '[vV]' ? ">gv" : ">gv")
+   " NOTE: > and < lose the visual selection once applied, reapply with gv.
+   " NOTE: <c-v><s-i><tab> adds spaces on empty lines... Use > on empty lines!
+   vnoremap <expr>   <tab> mode() ==# "v" \|\| mode() ==# 'V' ? "<c-v><s-i><tab>" : "<s-i><tab>"
    vnoremap <expr> <s-tab> mode() ==# "v" \|\| mode() ==# 'V' ? "<c-v><gv" : "<gv"
    vnoremap > >gv
    vnoremap < <gv
